@@ -1,17 +1,24 @@
 import "./assetPathSetup.js";
+import { readImage } from '@itk-wasm/image-io';
 import { ZarrMultiscaleSpatialImage } from "@itk-viewer/io/ZarrMultiscaleSpatialImage.js";
+import { ItkWasmMultiscaleSpatialImage } from '@itk-viewer/io/ItkWasmMultiscaleSpatialImage.js';
 
 import "@itk-viewer/element/itk-viewer-3d.js";
 
-const omeZarrPath = "/vm_head_frozenct.zarr";
+const annotationPath = "64816L_amygdala_int.nii.gz"
 
-const makeZarrImage = (imagePath: string) => {
+const loadImage = async (imagePath: string) => {
   const url = new URL(imagePath, document.location.origin);
-  return ZarrMultiscaleSpatialImage.fromUrl(url);
+  const response = await fetch(url.href);
+  const data = new Uint8Array(await response.arrayBuffer());
+  const inputFile = { data, path: imagePath };
+  const { image: itkimage } = await readImage(inputFile);
+  const image = new ItkWasmMultiscaleSpatialImage(itkimage);
+  return image;
 };
 
 document.addEventListener("DOMContentLoaded", async function () {
-  const image = await makeZarrImage(omeZarrPath);
+  const image = await loadImage(annotationPath)
 
   const viewerElement = document.querySelector("#viewer");
   if (!viewerElement) throw new Error("Could not find element");
@@ -24,25 +31,25 @@ document.addEventListener("DOMContentLoaded", async function () {
     .getSnapshot()
     .context.viewports[0].getSnapshot()
     .context.views[0].getSnapshot().context.imageActor;
-  imageActor.send({ type: "colorMap", colorMap: "CT-Bone", component: 0 });
+  // imageActor.send({ type: "colorMap", colorMap: "CT-Bone", component: 0 });
   console.log(imageActor);
   const context = viewer!.getSnapshot().context;
   const camera = context.viewports[0].getSnapshot().context.camera;
   console.log(camera);
 
-  camera.send({
-    type: "setPose",
-    pose: {
-      center: new Float32Array([-0.263671875, -30.263671875, -135.5]),
-      distance: 612.2755605271669,
-      rotation: new Float32Array([
-        0.5477936267852783, 0.19993622601032257, 0.2401820719242096,
-        0.7760542631149292,
-      ]),
-    },
-  });
+  // camera.send({
+  //   type: "setPose",
+  //   pose: {
+  //     center: new Float32Array([-0.263671875, -30.263671875, -135.5]),
+  //     distance: 612.2755605271669,
+  //     rotation: new Float32Array([
+  //       0.5477936267852783, 0.19993622601032257, 0.2401820719242096,
+  //       0.7760542631149292,
+  //     ]),
+  //   },
+  // });
 
-  setTimeout(() => {
-    imageActor.send({ type: "normalizedOpacityPoints", points: [[0.25, 0.05], [0.5, 0.7], [0.8, 1.0]], component: 0 });
-  }, 1500);
+  // setTimeout(() => {
+  //   imageActor.send({ type: "normalizedOpacityPoints", points: [[0.25, 0.05], [0.5, 0.7], [0.8, 1.0]], component: 0 });
+  // }, 1500);
 });

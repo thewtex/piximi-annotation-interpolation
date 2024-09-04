@@ -27,6 +27,10 @@ export default defineConfig({
           src: "./node_modules/@shoelace-style/shoelace/dist/assets",
           dest: "dist/shoelace",
         },
+        {
+          src: './node_modules/.pnpm/@itk-wasm+image-io@1.3.0/node_modules/@itk-wasm/image-io/dist/pipelines/*',
+          dest: 'itk/pipelines',
+        },
       ],
     }),
   ],
