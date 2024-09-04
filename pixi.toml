@@ -3,7 +3,7 @@ authors = ["Matt McCormick <matt.mccormick@kitware.com>"]
 channels = ["conda-forge"]
 description = "Add a short description here"
 name = "piximi-contour-interpolation"
-platforms = ["linux-aarch64"]
+platforms = ["osx-arm64", "linux-aarch64"]
 version = "0.1.0"
 
 [tasks]
