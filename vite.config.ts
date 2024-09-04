@@ -31,6 +31,10 @@ export default defineConfig({
           src: './node_modules/.pnpm/@itk-wasm+image-io@1.3.0/node_modules/@itk-wasm/image-io/dist/pipelines/*',
           dest: 'itk/pipelines',
         },
+        {
+          src: './node_modules/.pnpm/@itk-wasm+morphological-contour-interpolation@1.1.0/node_modules/@itk-wasm/morphological-contour-interpolation/dist/pipelines/*',
+          dest: 'itk/pipelines',
+        }
       ],
     }),
   ],
