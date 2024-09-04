@@ -5,7 +5,8 @@ import { ItkWasmMultiscaleSpatialImage } from '@itk-viewer/io/ItkWasmMultiscaleS
 
 import "@itk-viewer/element/itk-viewer-3d.js";
 
-const annotationPath = "64816L_amygdala_int.nii.gz"
+// const annotationPath = "64816L_amygdala_int.nii.gz"
+const annotationPath = "ExternalInterpolation.nrrd"
 
 const loadImage = async (imagePath: string) => {
   const url = new URL(imagePath, document.location.origin);
