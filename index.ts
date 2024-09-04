@@ -4,9 +4,11 @@ import { ZarrMultiscaleSpatialImage } from "@itk-viewer/io/ZarrMultiscaleSpatial
 import { ItkWasmMultiscaleSpatialImage } from '@itk-viewer/io/ItkWasmMultiscaleSpatialImage.js';
 
 import "@itk-viewer/element/itk-viewer-3d.js";
+import "@itk-viewer/element/itk-viewer-2d.js";
 
 // const annotationPath = "64816L_amygdala_int.nii.gz"
-const annotationPath = "ExternalInterpolation.nrrd"
+// const annotationPath = "ExternalInterpolation.nrrd"
+const annotationPath = "ExternalInterpolationOutput.nrrd"
 
 const loadImage = async (imagePath: string) => {
   const url = new URL(imagePath, document.location.origin);

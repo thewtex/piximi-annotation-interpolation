@@ -7,7 +7,7 @@ platforms = ["linux-aarch64"]
 version = "0.1.0"
 
 [tasks]
-interpolate = "python ./interpolate.py"
+interpolate-1 = "python ./interpolate.py ./public/ExternalInterpolation.nrrd ./public/ExternalInterpolationOutput.nrrd"
 build-volume-1 = "python build_volume.py ./ExternalInterpolation ./public/ExternalInterpolation.nrrd"
 
 [dependencies]
