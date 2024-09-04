@@ -35,6 +35,7 @@ const loadImage = async (imagePath: string, doInterpolation: boolean) => {
   if (doInterpolation) {
     itkimage = await interpolateAnnotation(itkimage);
   }
+  console.log(itkimage)
   const image = new ItkWasmMultiscaleSpatialImage(itkimage);
   return image;
 };
