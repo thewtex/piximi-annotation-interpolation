@@ -7,8 +7,11 @@ platforms = ["linux-aarch64"]
 version = "0.1.0"
 
 [tasks]
-interpolate-1 = "python ./interpolate.py ./public/ExternalInterpolation.nrrd ./public/ExternalInterpolationOutput.nrrd"
-build-volume-1 = "python build_volume.py ./ExternalInterpolation ./public/ExternalInterpolation.nrrd"
+interpolate-0 = "python ./interpolate.py ./public/ExternalInterpolation.nrrd ./public/ExternalInterpolationOutput.nrrd"
+build-volume-0 = "python build_volume.py ./ExternalInterpolation ./public/ExternalInterpolation.nrrd"
+interpolate-1 = "python ./interpolate.py ./public/ExternalInterpolation1.nrrd ./public/ExternalInterpolationOutput1.nrrd"
+build-volume-1 = "python build_volume.py ./ExternalInterpolation1 ./public/ExternalInterpolation1.nrrd"
+start = "pnpm start"
 
 [dependencies]
 python = ">=3.12.5,<4"

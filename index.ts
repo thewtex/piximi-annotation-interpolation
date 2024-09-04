@@ -13,8 +13,10 @@ import "@itk-viewer/element/itk-viewer-3d.js";
 import "@itk-viewer/element/itk-viewer-2d.js";
 
 // const annotationPath = "64816L_amygdala_int.nii.gz"
-const annotationPath = "ExternalInterpolation.nrrd"
+// const annotationPath = "ExternalInterpolation.nrrd"
 // const annotationPath = "ExternalInterpolationOutput.nrrd"
+const annotationPath = "ExternalInterpolation1.nrrd"
+// const annotationPath = "ExternalInterpolationOutput1.nrrd"
 const doInterpolation = true;
 
 const interpolateAnnotation = async (image: Image) => {

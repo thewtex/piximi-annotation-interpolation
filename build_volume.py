@@ -25,6 +25,7 @@ def build_volume(input_dir, output_file):
             plane_image = read_image(plane_filepath)
             volume.data[int(plane_index),:,:] = plane_image.data
 
+        print(volume.data.max())
         write_image(volume, output_file)
 
 if len(sys.argv) < 3:
